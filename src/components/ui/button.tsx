@@ -7,7 +7,7 @@ type ButtonSize = "default" | "sm" | "lg" | "icon"
 const variantStyles: Record<ButtonVariant, string> = {
   default: "bg-blue-600 text-white hover:bg-blue-500 focus-visible:ring-blue-400",
   outline: "border border-border text-foreground hover:bg-blue-500 focus-visible:ring-blue-300",
-  ghost: "text-foreground hover:bg-blue-50",
+  ghost: "text-foreground hover:bg-blue-300",
   destructive: "bg-red-600 text-white hover:bg-red-500 focus-visible:ring-red-400",
   secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200",
 }

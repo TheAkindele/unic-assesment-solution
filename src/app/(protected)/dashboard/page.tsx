@@ -17,7 +17,9 @@ interface ToolSummary {
 }
 
 export default function DashboardPage() {
-  const { user, stats } = useAuthStore((state) => ({ user: state.user, stats: state.stats }))
+  // const { user, stats } = useAuthStore((state) => ({ user: state.user, stats: state.stats }))
+  const user = useAuthStore((state) => state.user)
+  const stats = useAuthStore((state) => state.stats)
   const [tools, setTools] = useState<ToolSummary[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

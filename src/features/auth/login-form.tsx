@@ -16,13 +16,10 @@ export function LoginForm() {
 	const login = useAuthStore((state) => state.login)
 	const loading = useAuthStore((state) => state.loading)
 	const error = useAuthStore((state) => state.error)
-
-	const { user, stats, token, logout } = useAuthStore((state) => ({
-    user: state.user,
-    stats: state.stats,
-    token: state.token,
-    logout: state.logout,
-  }))
+	const user = useAuthStore((state) => state.user)
+	const stats = useAuthStore((state) => state.stats)
+	const token = useAuthStore((state) => state.token)
+	const logout = useAuthStore((state) => state.logout)
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
