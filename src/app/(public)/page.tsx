@@ -19,9 +19,9 @@ export default function LoginPage() {
             <li>Upload structured data for KPI extraction and trend charts.</li>
             <li>State persisted locally so you stay signed in between visits.</li>
           </ul>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col md:flex-row items-center gap-3">
             <Link
-              href="https://github.com/"
+              href="https://github.com/TheAkindele/unic-assesment-solution"
               target="_blank"
               rel="noreferrer"
               className="inline-flex h-10 items-center rounded-md border border-slate-300 px-4 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100"

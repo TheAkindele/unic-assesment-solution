@@ -6,7 +6,7 @@ type ButtonSize = "default" | "sm" | "lg" | "icon"
 
 const variantStyles: Record<ButtonVariant, string> = {
   default: "bg-blue-600 text-white hover:bg-blue-500 focus-visible:ring-blue-400",
-  outline: "border border-border text-foreground hover:bg-blue-50 focus-visible:ring-blue-300",
+  outline: "border border-border text-foreground hover:bg-blue-500 focus-visible:ring-blue-300",
   ghost: "text-foreground hover:bg-blue-50",
   destructive: "bg-red-600 text-white hover:bg-red-500 focus-visible:ring-red-400",
   secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200",
@@ -31,7 +31,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed",
+          `inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed
+          ${!disabled && !isLoading ? 'cursor-pointer' : "cursor-default"}`,
           variantStyles[variant],
           sizeStyles[size],
           className,

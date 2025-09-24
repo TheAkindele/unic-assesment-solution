@@ -34,7 +34,7 @@ export default function ProtectedLayout({ children }: { children: ReactNode }) {
 
   if (!hydrated) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center border-2 border-red-500">
         <span className="h-6 w-6 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" aria-hidden />
         <span className="sr-only">Loading…</span>
       </div>

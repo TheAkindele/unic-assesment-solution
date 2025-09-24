@@ -190,8 +190,11 @@ export function AnalysisPanel() {
               </p>
             </div>
 
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-xs text-slate-500">Summary: {summaryForScreenReader}</p>
+            <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-3">
+              <p className="md:max-w-[85%] box-border">
+                <span className="text-xs text-white text-bold mr-2">Summary:</span>
+                <span className="text-xs text-slate-500 ">{summaryForScreenReader}</span>
+              </p>
               <Button type="submit" isLoading={isLoading} disabled={!readyToAnalyze}>
                 Analyze data
               </Button>
@@ -269,7 +272,7 @@ export function AnalysisPanel() {
                 <thead>
                   <tr>
                     {analysis.result.table.headers.map((header) => (
-                      <th key={header} scope="col" className="bg-slate-50 px-3 py-2 text-left font-semibold text-slate-600">
+                      <th key={header} scope="col" className="bg-slate-50 px-3 py-2 text-left font-semibold text-slate-600 capitalize">
                         {header}
                       </th>
                     ))}
@@ -279,7 +282,7 @@ export function AnalysisPanel() {
                   {analysis.result.table.rows.map((row, rowIndex) => (
                     <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-white" : "bg-slate-50"}>
                       {row.map((value, cellIndex) => (
-                        <td key={`${rowIndex}-${cellIndex}`} className="px-3 py-2 text-slate-700 dark:text-slate-200">
+                        <td key={`${rowIndex}-${cellIndex}`} className="px-3 py-2 text-slate-700 dark:text-slate-800">
                           {typeof value === "number" ? value.toLocaleString() : String(value)}
                         </td>
                       ))}
@@ -287,7 +290,7 @@ export function AnalysisPanel() {
                   ))}
                   {analysis.result.table.rows.length === 0 && (
                     <tr>
-                      <td colSpan={analysis.result.table.headers.length || 1} className="px-3 py-6 text-center text-slate-500">
+                      <td colSpan={analysis.result.table.headers.length || 1} className="px-3 py-6 text-center text-slate-800">
                         No tabular preview available.
                       </td>
                     </tr>

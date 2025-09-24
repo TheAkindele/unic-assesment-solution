@@ -17,6 +17,13 @@ export function LoginForm() {
 	const loading = useAuthStore((state) => state.loading)
 	const error = useAuthStore((state) => state.error)
 
+	const { user, stats, token, logout } = useAuthStore((state) => ({
+    user: state.user,
+    stats: state.stats,
+    token: state.token,
+    logout: state.logout,
+  }))
+
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		const success = await login(username, password)
