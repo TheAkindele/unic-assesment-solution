@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# AI Agent Dashboard – Assessment Solution
 
-## Getting Started
+## 🚀 Overview
+This project is a **Next.js 15 + TypeScript** dashboard application built for the **AI Agent Dashboard Candidate Assignment**.  
+It demonstrates authentication, a protected dashboard, a chat tool with mocked LLM responses, and a data analysis tool for CSV/JSON uploads — all using **mocked APIs** for offline reliability.
 
-First, run the development server:
+---
 
+## 🛠 Tech Stack
+- **Next.js 15+ (App Router)**  
+- **TypeScript**  
+- **Zustand** (state management)  
+- **shadcn/ui** (UI components & Tailwind styling)  
+- **MSW (Mock Service Worker)** (mocked backend APIs)  
+- **React Testing Library + Node test runner** (unit tests)  
+- **Playwright** (e2e tests)
+
+---
+
+## 📐 Design Notes
+
+### Component Structure
+- **app/** → Next.js routes (`/login`, `/dashboard`, `/tools/chat`, `/tools/analysis`).  
+- **components/** → Shared UI (`Navbar`, `ToolCard`, `MessageBubble`, `FileUpload`, etc.).  
+- **store/** → Zustand stores (`authStore`, `userStatsStore`, `chatStore`, `analysisStore`).  
+- **mocks/** → MSW handlers for login, chat, and analysis APIs.  
+- **tests/** → Unit and e2e test files.  
+
+### State Strategy (Zustand)
+- **authStore** → manages login/logout state.  
+- **userStatsStore** → tracks usage stats (queries, files analyzed).  
+- **chatStore** → manages chat messages, loading, errors.  
+- **analysisStore** → manages file upload, analysis results, selected model.  
+
+### Caching Approach
+- No heavy caching needed since mocks are deterministic.  
+- Zustand keeps session and tool states in-memory during navigation.  
+
+### Error Handling
+- **Auth errors** → invalid credentials → error banner.  
+- **Chat errors** → show retry button if mock API fails.  
+- **Analysis errors** → invalid file type or empty dataset → user-friendly error.  
+- **Fallbacks** → loading states, truncated long responses, safe markdown rendering.
+
+---
+
+## 🔌 Mocks & API Swapping
+
+### How Mocks Work
+- All backend endpoints (`/api/login`, `/api/chat`, `/api/analyze`) are intercepted by **MSW**.  
+- MSW returns mock responses for:
+  - **Auth** (login/logout with fixed credentials).  
+  - **Chat** (mock LLM responses, including simple calculator & weather lookup).  
+  - **Analysis** (mock summary, KPIs, and chart data).  
+- Mock responses also simulate:
+  - **Delays** → loading indicators can be tested.  
+  - **Errors** → fallback and retry UI.  
+  - **Large responses** → truncation/pagination handling.  
+
+### Switching to Real APIs
+If you want to connect to real APIs instead of mocks:
+1. Replace MSW handlers in `mocks/handlers.ts` with real API calls inside `lib/api.ts`.  
+2. Control the behavior using an environment variable in `.env.local`.  
+
+Example:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+# .env.local
+USE_MOCKS=true   # run with MSW mocks
+USE_MOCKS=false  # connect to real APIs
