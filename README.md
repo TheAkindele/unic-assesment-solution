@@ -92,6 +92,20 @@ npm run test:unit
 npm run test:e2e
 ```
 
+## 📊 Sample Data
+
+A sample CSV file is included in the project for testing the **Data Analysis Tool**.
+
+- **Filename:** `sample_sales.csv`  
+- **Location in app:** `/public/sample-data/sample_sales.csv`  
+- **Download link:** [Click here to download sample_sales.csv](./public/sample-data/sample_sales.csv)  
+
+To use it:
+1. Log in and navigate to the **Data Analysis Tool** (`/tools/analysis`).
+2. Upload the downloaded `sample_sales.csv` file.
+3. The app will display summary insights, KPIs, and a chart/table.
+
 ## Deployment
 The app has been deployed on vercel and the live demo can be access here 
 <a href="https://unic-assesment-solution.vercel.app/" target="_blank">AI Agent Dashboard</a>
+
