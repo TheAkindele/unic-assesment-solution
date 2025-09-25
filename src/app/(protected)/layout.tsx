@@ -66,7 +66,7 @@ export default function ProtectedLayout({ children }: { children: ReactNode }) {
                 variant="ghost"
                 onClick={() => {
                   logout()
-                  router.replace("/")
+                  window.location.href = "/"
                 }}
                 className="w-full sm:w-auto"
               >
