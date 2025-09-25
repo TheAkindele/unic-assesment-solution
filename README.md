@@ -67,3 +67,8 @@ Example:
 # .env.local
 USE_MOCKS=true   # run with MSW mocks
 USE_MOCKS=false  # connect to real APIs
+
+## Running Locally
+git clone https://github.com/TheAkindele/unic-assesment-solution.git
+cd unic-assesment-solution
+npm install
