@@ -1,12 +1,12 @@
 # AI Agent Dashboard – Assessment Solution
 
-## 🚀 Overview
+## Overview
 This project is a **Next.js 15 + TypeScript** dashboard application built for the **AI Agent Dashboard Candidate Assignment**.  
 It demonstrates authentication, a protected dashboard, a chat tool with mocked LLM responses, and a data analysis tool for CSV/JSON uploads — all using **mocked APIs** for offline reliability.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 - **Next.js 15+ (App Router)**  
 - **TypeScript**  
 - **Zustand** (state management)  
@@ -17,7 +17,7 @@ It demonstrates authentication, a protected dashboard, a chat tool with mocked L
 
 ---
 
-## 📐 Design Notes
+## Design Notes
 
 ### Component Structure
 - **app/** → Next.js routes (`/login`, `/dashboard`, `/tools/chat`, `/tools/analysis`).  
@@ -44,7 +44,7 @@ It demonstrates authentication, a protected dashboard, a chat tool with mocked L
 
 ---
 
-## 🔌 Mocks & API Swapping
+## Mocks & API Swapping
 
 ### How Mocks Work
 - All backend endpoints (`/api/login`, `/api/chat`, `/api/analyze`) are intercepted by **MSW**.  
@@ -92,7 +92,7 @@ npm run test:unit
 npm run test:e2e
 ```
 
-## 📊 Sample Data
+## Sample Data
 
 A sample CSV file is included in the project for testing the **Data Analysis Tool**.
 
