@@ -67,8 +67,31 @@ Example:
 # .env.local
 USE_MOCKS=true   # run with MSW mocks
 USE_MOCKS=false  # connect to real APIs
+```
 
 ## Running Locally
+To run the project locally, do the following:
+```bash
 git clone https://github.com/TheAkindele/unic-assesment-solution.git
 cd unic-assesment-solution
 npm install
+npm run dev
+```
+
+## Testing
+To run all test, use the command
+```bash
+npm test
+```
+- To run the unit test only, use the command
+```bash
+npm run test:unit
+```
+- To run the e2e test only, use the command
+```bash
+npm run test:e2e
+```
+
+## Deployment
+The app has been deployed on vercel and the live demo can be access here 
+<a href="https://unic-assesment-solution.vercel.app/" target="_blank">AI Agent Dashboard</a>
